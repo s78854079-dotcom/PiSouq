@@ -1,74 +1,73 @@
+Pi.init({
+    version: "2.0"
+});
+
+
 function addProduct(){
 
-let name = document.getElementById("name").value;
-let price = document.getElementById("price").value;
-let description = document.getElementById("description").value;
-let imageInput = document.getElementById("image");
+    let name = document.getElementById("name").value;
+    let price = document.getElementById("price").value;
+    let description = document.getElementById("description").value;
+    let imageInput = document.getElementById("image");
 
 
-if(name==="" || price==="" || description===""){
-alert("أكمل بيانات المنتج");
-return;
-}
+    if(name === "" || price === "" || description === ""){
+        alert("أكمل بيانات المنتج");
+        return;
+    }
 
 
-let saveProduct = (image)=>{
+    let saveProduct = (image)=>{
+
+        let product = {
+            name: name,
+            price: price,
+            description: description,
+            image: image,
+            seller: localStorage.getItem("username") || "مستخدم"
+        };
 
 
-let product = {
-
-name:name,
-price:price,
-description:description,
-image:image,
-seller: localStorage.getItem("username") || "مستخدم"
-
-};
+        let products = JSON.parse(localStorage.getItem("products")) || [];
 
 
-let products = JSON.parse(localStorage.getItem("products")) || [];
+        products.push(product);
 
 
-products.push(product);
+        localStorage.setItem(
+            "products",
+            JSON.stringify(products)
+        );
 
 
-localStorage.setItem(
-"products",
-JSON.stringify(products)
-);
+        alert("تم نشر الإعلان بنجاح");
 
 
-alert("تم نشر الإعلان بنجاح");
+        window.location.href = "buy.html";
+
+    };
 
 
-window.location.href="buy.html";
+    if(imageInput && imageInput.files.length > 0){
+
+        let reader = new FileReader();
 
 
-};
+        reader.onload = function(e){
+
+            saveProduct(e.target.result);
+
+        };
 
 
-
-if(imageInput.files.length>0){
-
-let reader = new FileReader();
+        reader.readAsDataURL(imageInput.files[0]);
 
 
-reader.onload=function(e){
+    }else{
 
-saveProduct(e.target.result);
+        saveProduct("");
 
-};
-
-
-reader.readAsDataURL(imageInput.files[0]);
-
-
-}else{
-
-saveProduct("");
-
-}
-
+    }
 
 }
 
@@ -79,72 +78,70 @@ let productsBox = document.getElementById("products");
 
 if(productsBox){
 
-
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-
-products.forEach(product=>{
+    let products = JSON.parse(localStorage.getItem("products")) || [];
 
 
-productsBox.innerHTML += `
+    products.forEach(product=>{
 
-<div class="product">
+        productsBox.innerHTML += `
 
-${product.image ? 
-"<img src='"+product.image+"'>" 
-: ""}
+        <div class="product">
 
+        ${product.image ? 
+        "<img src='"+product.image+"'>" 
+        : ""}
 
-<h3>${product.name}</h3>
+        <h3>${product.name}</h3>
 
+        <p>السعر: ${product.price} Pi</p>
 
-<p>السعر: ${product.price} Pi</p>
+        <p>${product.description}</p>
 
+        <p>البائع: ${product.seller}</p>
 
-<p>${product.description}</p>
+        </div>
 
+        `;
 
-<p>البائع: ${product.seller}</p>
+    });
 
-
-</div>
-
-`;
-
-});
-
-Pi.init({
-version: "2.0"
-});
 }
+
+
+
+
 function loginWithPi(){
 
-Pi.authenticate(
-["username"],
-function(auth){
+    Pi.authenticate(
+        ["username"],
 
-localStorage.setItem(
-"pi_username",
-auth.user.username
-);
+        function(auth){
 
-alert(
-"تم تسجيل الدخول بحساب Pi: " + auth.user.username
-);
+            localStorage.setItem(
+                "pi_username",
+                auth.user.username
+            );
 
-window.location.href="index.html";
 
-},
-function(error){
+            alert(
+                "تم تسجيل الدخول بحساب Pi: " 
+                + auth.user.username
+            );
 
-alert(
-"فشل تسجيل الدخول إلى Pi"
-);
 
-console.log(error);
+            window.location.href = "index.html";
 
-}
+        },
 
-);
+
+        function(error){
+
+            alert("فشل تسجيل الدخول إلى Pi");
+
+            console.log(error);
+
+        }
+
+    );
 
 }

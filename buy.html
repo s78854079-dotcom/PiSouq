@@ -15,8 +15,7 @@
 
 <h1>🛍️ المنتجات المتاحة</h1>
 
-<div id="products">
-</div>
+<div id="products"></div>
 
 
 <script>
@@ -38,6 +37,8 @@ products.forEach(product => {
 box.innerHTML += `
 
 <div>
+
+${product.image ? `<img src="${product.image}" width="200">` : ""}
 
 <h3>${product.name}</h3>
 

@@ -115,3 +115,34 @@ ${product.image ?
 
 
 }
+function loginWithPi(){
+
+Pi.authenticate(
+["username"],
+function(auth){
+
+localStorage.setItem(
+"pi_username",
+auth.user.username
+);
+
+alert(
+"تم تسجيل الدخول بحساب Pi: " + auth.user.username
+);
+
+window.location.href="index.html";
+
+},
+function(error){
+
+alert(
+"فشل تسجيل الدخول إلى Pi"
+);
+
+console.log(error);
+
+}
+
+);
+
+}

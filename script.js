@@ -1,6 +1,10 @@
-Pi.init({
-    version: "2.0"
-});
+if (typeof Pi !== "undefined") {
+
+    Pi.init({
+        version: "2.0"
+    });
+
+}
 
 
 function addProduct(){

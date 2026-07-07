@@ -148,7 +148,30 @@ function loginWithPi(){
 
     );
 
+function loginWithPi(){
+
+alert("تم تشغيل تسجيل دخول Pi");
+
+Pi.authenticate(
+["username"],
+
+function(auth){
+
+alert("تم تسجيل الدخول: " + auth.user.username);
+
+},
+
+function(error){
+
+alert("فشل تسجيل الدخول");
+
+console.log(error);
+
 }
+
+);
+
+        }}
 function testPi(){
     alert("الزر يعمل");
 }

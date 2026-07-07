@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تسجيل الدخول - PiSouq</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>👤 تسجيل الدخول</h1>
+
+<input type="text" id="username" placeholder="اكتب اسمك">
+
+<br><br>
+
+<button onclick="login()">دخول</button>
+
+
+<script>
+
+function login(){
+
+let username = document.getElementById("username").value;
+
+localStorage.setItem("username", username);
+
+alert("تم تسجيل الدخول باسم: " + username);
+
+window.location.href = "index.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

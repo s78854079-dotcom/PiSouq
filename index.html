@@ -4,12 +4,15 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>سوق العربية</title>
 
 <link rel="stylesheet" href="style.css">
+
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
 </head>
 
 
@@ -31,60 +34,82 @@
 
 <div class="card">
 
+
 <h2>مرحباً بك</h2>
+
 
 <p id="welcome">
 أهلاً بك في سوق العربية
 </p>
 
+
+
 <a href="login.html">
+
 <button>
 تسجيل الدخول
 </button>
+
 </a>
+
+
 
 <br><br>
 
+
+
 <button onclick="loginWithPi()">
+
 تسجيل الدخول بـ Pi
+
 </button>
 
 
+
 <br><br>
+
 
 
 <a href="sell.html">
 
 <button>
-➕ بيع منتج
+
+➕ بيع المنتجات
+
 </button>
 
 </a>
+
 
 
 <br><br>
 
 
+
 <a href="buy.html">
 
 <button>
+
 🛍️ شراء المنتجات
+
 </button>
 
 </a>
 
 
-</div>
 
+</div>
 
 
 </main>
 
 
 
+
 <script>
 
 let username = localStorage.getItem("username");
+
 
 if(username){
 
@@ -93,8 +118,12 @@ document.getElementById("welcome").innerHTML =
 
 }
 
+
+
 </script>
 
+
+<script src="script.js"></script>
 
 
 </body>

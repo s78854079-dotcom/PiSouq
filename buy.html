@@ -11,17 +11,28 @@
 
 <h1>🛍️ المنتجات المتاحة</h1>
 
-<div>
-<h3>بطارية سيارة</h3>
-<p>السعر: 20 Pi</p>
-<button>عرض التفاصيل</button>
-</div>
+<div id="products"></div>
 
+<script>
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let box = document.getElementById("products");
+
+products.forEach(product => {
+
+box.innerHTML += `
 <div>
-<h3>هاتف مستعمل</h3>
-<p>السعر: 150 Pi</p>
+<h3>${product.name}</h3>
+<p>السعر: ${product.price} Pi</p>
+<p>${product.description}</p>
 <button>عرض التفاصيل</button>
 </div>
+`;
+
+});
+
+</script>
 
 </body>
 </html>

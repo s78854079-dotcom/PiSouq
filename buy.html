@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>شراء المنتجات - PiSouq</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <h1>🛍️ المنتجات المتاحة</h1>
 
-<div id="products"></div>
+<div id="products">
+</div>
+
 
 <script>
 
@@ -19,20 +25,39 @@ let products = JSON.parse(localStorage.getItem("products")) || [];
 
 let box = document.getElementById("products");
 
+
+if (products.length === 0) {
+
+box.innerHTML = "<p>لا توجد منتجات حاليًا</p>";
+
+}
+
+
 products.forEach(product => {
 
 box.innerHTML += `
+
 <div>
+
 <h3>${product.name}</h3>
+
 <p>السعر: ${product.price} Pi</p>
+
 <p>${product.description}</p>
+
 <button>عرض التفاصيل</button>
+
 </div>
+
+<br>
+
 `;
 
 });
 
 </script>
 
+
 </body>
+
 </html>

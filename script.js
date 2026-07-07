@@ -149,3 +149,6 @@ function loginWithPi(){
     );
 
 }
+function testPi(){
+    alert("الزر يعمل");
+}

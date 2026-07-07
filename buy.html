@@ -17,47 +17,43 @@
 
 <div id="products"></div>
 
-
 <script>
 
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
 let box = document.getElementById("products");
 
+if(products.length == 0){
 
-if (products.length === 0) {
-
-box.innerHTML = "<p>لا توجد منتجات حاليًا</p>";
+box.innerHTML="<h3>لا توجد منتجات حالياً</h3>";
 
 }
 
-
-products.forEach(product => {
+products.forEach(product=>{
 
 box.innerHTML += `
 
 <div>
 
-${product.image ? `<img src="${product.image}" width="200">` : ""}
+${product.image ? `<img src="${product.image}" width="250">` : ""}
 
-<h3>${product.name}</h3>
+<h2>${product.name}</h2>
 
-<p>السعر: ${product.price} Pi</p>
+<p><strong>السعر:</strong> ${product.price} Pi</p>
 
-<p>${product.description}</p>
+<p><strong>الوصف:</strong> ${product.description}</p>
+
+<p><strong>👤 البائع:</strong> ${product.username}</p>
 
 <button>عرض التفاصيل</button>
 
 </div>
-
-<br>
 
 `;
 
 });
 
 </script>
-
 
 </body>
 

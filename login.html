@@ -28,16 +28,20 @@ function login(){
 
 let username = document.getElementById("username").value;
 
+if(username == ""){
+alert("اكتب اسمك أولاً");
+return;
+}
+
 localStorage.setItem("username", username);
 
-alert("تم تسجيل الدخول باسم: " + username);
+alert("تم تسجيل الدخول باسم " + username);
 
-window.location.href = "index.html";
+window.location.href="index.html";
 
 }
 
 </script>
-
 
 </body>
 

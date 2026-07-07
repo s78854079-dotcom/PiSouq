@@ -1,37 +1,99 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PiSouq</title>
+<title>سوق العربية</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<h1>مرحبًا بك في PiSouq</h1>
 
-<p>سوق عربي لبيع وشراء المنتجات باستخدام Pi.</p>
+<header>
 
-<a href="sell.html">
-<button>🛒 بيع منتج</button>
-</a>
+<h1>🛒 سوق العربية</h1>
 
-<br><br>
+<p>سوق عربي لبيع وشراء المنتجات باستخدام Pi</p>
 
-<a href="buy.html">
-<button>🛍️ شراء منتج</button>
-</a>
+</header>
 
-<br><br>
+
+
+<main>
+
+
+<div class="card">
+
+<h2>مرحباً بك</h2>
+
+<p id="welcome">
+أهلاً بك في سوق العربية
+</p>
+
 
 <a href="login.html">
-<button>👤 تسجيل الدخول</button>
+
+<button>
+تسجيل الدخول
+</button>
+
 </a>
 
-<script src="script.js"></script>
+
+<br><br>
+
+
+<a href="sell.html">
+
+<button>
+➕ بيع منتج
+</button>
+
+</a>
+
+
+<br><br>
+
+
+<a href="buy.html">
+
+<button>
+🛍️ شراء المنتجات
+</button>
+
+</a>
+
+
+</div>
+
+
+
+</main>
+
+
+
+<script>
+
+let username = localStorage.getItem("username");
+
+if(username){
+
+document.getElementById("welcome").innerHTML =
+"مرحباً بك يا " + username;
+
+}
+
+</script>
+
+
 
 </body>
+
 </html>

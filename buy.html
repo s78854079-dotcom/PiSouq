@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>شراء المنتجات - PiSouq</title>
+<title>المنتجات - سوق العربية</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -13,47 +13,24 @@
 
 <body>
 
-<h1>🛍️ المنتجات المتاحة</h1>
+<header>
+
+<h1>🛍️ المنتجات</h1>
+
+<a href="index.html">الرئيسية</a>
+
+</header>
+
+
+<main>
 
 <div id="products"></div>
 
-<script>
+</main>
 
-let products = JSON.parse(localStorage.getItem("products")) || [];
 
-let box = document.getElementById("products");
+<script src="script.js"></script>
 
-if(products.length == 0){
-
-box.innerHTML="<h3>لا توجد منتجات حالياً</h3>";
-
-}
-
-products.forEach(product=>{
-
-box.innerHTML += `
-
-<div>
-
-${product.image ? `<img src="${product.image}" width="250">` : ""}
-
-<h2>${product.name}</h2>
-
-<p><strong>السعر:</strong> ${product.price} Pi</p>
-
-<p><strong>الوصف:</strong> ${product.description}</p>
-
-<p><strong>👤 البائع:</strong> ${product.username}</p>
-
-<button>عرض التفاصيل</button>
-
-</div>
-
-`;
-
-});
-
-</script>
 
 </body>
 

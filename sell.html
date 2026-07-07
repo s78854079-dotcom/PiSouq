@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>بيع منتج - PiSouq</title>
+<title>إضافة منتج - سوق العربية</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -13,36 +13,52 @@
 
 <body>
 
+<header>
 <h1>🛒 إضافة منتج جديد</h1>
-
-<p>املأ البيانات ثم اضغط نشر الإعلان.</p>
-
-
-<input type="text" id="name" placeholder="اسم المنتج">
-
-<br><br>
+<a href="index.html">الرئيسية</a>
+</header>
 
 
-<input type="number" id="price" placeholder="السعر بعملة Pi">
+<main>
 
-<br><br>
+<div class="card">
 
+<h2>أضف إعلانك</h2>
 
-<textarea id="description" placeholder="وصف المنتج" rows="6"></textarea>
-
-<br><br>
-
-
-<input type="file" id="image" accept="image/*">
-
-<br><br>
+<input 
+type="text" 
+id="name" 
+placeholder="اسم المنتج">
 
 
-<button onclick="addProduct()">📤 نشر الإعلان</button>
+<input 
+type="number" 
+id="price" 
+placeholder="السعر بعملة Pi">
+
+
+<textarea 
+id="description" 
+placeholder="وصف المنتج"></textarea>
+
+
+<input 
+type="file" 
+id="image"
+accept="image/*">
+
+
+<button onclick="addProduct()">
+نشر الإعلان
+</button>
+
+
+</div>
+
+</main>
 
 
 <script src="script.js"></script>
-
 
 </body>
 

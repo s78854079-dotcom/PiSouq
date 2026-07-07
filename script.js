@@ -1,10 +1,7 @@
-alert("تم تحميل الملف")if
 if (typeof Pi !== "undefined") {
-
     Pi.init({
         version: "2.0"
     });
-
 }
 
 
@@ -35,9 +32,7 @@ function addProduct(){
 
         let products = JSON.parse(localStorage.getItem("products")) || [];
 
-
         products.push(product);
-
 
         localStorage.setItem(
             "products",
@@ -46,7 +41,6 @@ function addProduct(){
 
 
         alert("تم نشر الإعلان بنجاح");
-
 
         window.location.href = "buy.html";
 
@@ -57,24 +51,20 @@ function addProduct(){
 
         let reader = new FileReader();
 
-
         reader.onload = function(e){
-
             saveProduct(e.target.result);
-
         };
-
 
         reader.readAsDataURL(imageInput.files[0]);
 
-
-    }else{
+    } else {
 
         saveProduct("");
 
     }
 
 }
+
 
 
 
@@ -92,9 +82,7 @@ if(productsBox){
 
         <div class="product">
 
-        ${product.image ? 
-        "<img src='"+product.image+"'>" 
-        : ""}
+        ${product.image ? "<img src='"+product.image+"'>" : ""}
 
         <h3>${product.name}</h3>
 
@@ -115,6 +103,7 @@ if(productsBox){
 
 
 
+
 function loginWithPi(){
 
     Pi.authenticate(
@@ -129,8 +118,7 @@ function loginWithPi(){
 
 
             alert(
-                "تم تسجيل الدخول بحساب Pi: " 
-                + auth.user.username
+                "تم تسجيل الدخول بحساب Pi: " + auth.user.username
             );
 
 
@@ -149,30 +137,4 @@ function loginWithPi(){
 
     );
 
-function loginWithPi(){
-
-alert("تم تشغيل تسجيل دخول Pi");
-
-Pi.authenticate(
-["username"],
-
-function(auth){
-
-alert("تم تسجيل الدخول: " + auth.user.username);
-
-},
-
-function(error){
-
-alert("فشل تسجيل الدخول");
-
-console.log(error);
-
-}
-
-);
-
-        }}
-function testPi(){
-    alert("الزر يعمل");
 }

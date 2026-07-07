@@ -1,3 +1,4 @@
+alert("تم تحميل الملف")if
 if (typeof Pi !== "undefined") {
 
     Pi.init({

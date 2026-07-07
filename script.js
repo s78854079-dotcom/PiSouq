@@ -1,69 +1,117 @@
-function addProduct() {
+function addProduct(){
 
-    let username = localStorage.getItem("username") || "زائر";
+let name = document.getElementById("name").value;
+let price = document.getElementById("price").value;
+let description = document.getElementById("description").value;
+let imageInput = document.getElementById("image");
 
-    let name = document.getElementById("name").value;
-    let price = document.getElementById("price").value;
-    let description = document.getElementById("description").value;
 
-    let imageInput = document.getElementById("image");
+if(name==="" || price==="" || description===""){
+alert("أكمل بيانات المنتج");
+return;
+}
 
-    if (name === "" || price === "" || description === "") {
-        alert("يرجى تعبئة جميع البيانات");
-        return;
-    }
 
-    if (imageInput.files.length > 0) {
+let saveProduct = (image)=>{
 
-        let reader = new FileReader();
 
-        reader.onload = function () {
+let product = {
 
-            saveProduct(
-                username,
-                name,
-                price,
-                description,
-                reader.result
-            );
+name:name,
+price:price,
+description:description,
+image:image,
+seller: localStorage.getItem("username") || "مستخدم"
 
-        };
+};
 
-        reader.readAsDataURL(imageInput.files[0]);
 
-    } else {
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
-        saveProduct(
-            username,
-            name,
-            price,
-            description,
-            ""
-        );
 
-    }
+products.push(product);
+
+
+localStorage.setItem(
+"products",
+JSON.stringify(products)
+);
+
+
+alert("تم نشر الإعلان بنجاح");
+
+
+window.location.href="buy.html";
+
+
+};
+
+
+
+if(imageInput.files.length>0){
+
+let reader = new FileReader();
+
+
+reader.onload=function(e){
+
+saveProduct(e.target.result);
+
+};
+
+
+reader.readAsDataURL(imageInput.files[0]);
+
+
+}else{
+
+saveProduct("");
 
 }
 
 
-function saveProduct(username, name, price, description, image) {
+}
 
-    let product = {
-        username: username,
-        name: name,
-        price: price,
-        description: description,
-        image: image
-    };
 
-    let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    products.push(product);
+let productsBox = document.getElementById("products");
 
-    localStorage.setItem("products", JSON.stringify(products));
 
-    alert("تم نشر الإعلان بنجاح");
+if(productsBox){
 
-    window.location.href = "buy.html";
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+
+products.forEach(product=>{
+
+
+productsBox.innerHTML += `
+
+<div class="product">
+
+${product.image ? 
+"<img src='"+product.image+"'>" 
+: ""}
+
+
+<h3>${product.name}</h3>
+
+
+<p>السعر: ${product.price} Pi</p>
+
+
+<p>${product.description}</p>
+
+
+<p>البائع: ${product.seller}</p>
+
+
+</div>
+
+`;
+
+});
+
 
 }

@@ -59,4 +59,3 @@ function loginWithPi() {
       alert("فشل تسجيل الدخول");
     }
   );
-}

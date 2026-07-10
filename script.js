@@ -54,6 +54,7 @@ function loginWithPi() {
       alert("تم تسجيل الدخول: " + auth.user.username);
       location.reload();
     },
+
     function(error) {
       console.log(error);
       alert("فشل تسجيل الدخول");

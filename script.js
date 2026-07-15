@@ -39,4 +39,5 @@ window.loginWithPi = function () {
 
       alert("فشل تسجيل الدخول");
 
-   
+   );
+};

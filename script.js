@@ -44,4 +44,5 @@ window.addProduct = async function () {
     alert("حدث خطأ أثناء النشر");
 
   }
-  
+
+    
